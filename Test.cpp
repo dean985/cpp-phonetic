@@ -96,33 +96,84 @@ TEST_CASE("check transform between g, j")
 
 
 TEST_CASE("check transform between c, k, q") 
-{
-    
-   
+{       
+        string text = "kommunity cuit kuiet cilo"
+        CHECK(find(text, "community") == string("kommunity"));
+        CHECK(find(text, "quit") == string("cuit"));
+        CHECK(find(text, "quiet") == string("keuit"));
+        CHECK(find(text, "kilo") == string("cilo"));
+        
+        string text2 = "herkules chikqen qangroo darq";
+        CHECK(find(text2, "hercules") == string("herkules"));
+        CHECK(find(text2, "chicken") == string("chikqen"));
+        CHECK(find(text2, "kangroo") == string("qangroo"));
+        CHECK(find(text2, "dark") == string("darq"));
+        
+        CHECK(find("maqe", "make") == string("maqe"));
+        CHECK(find("kool", "cool") == string("kool"));
+        CHECK(find("roqq", "rock") == string("roqq"));
 }
 
 TEST_CASE("check transform between s, z") 
 {
-    
+    CHECK(find("mezs", "mess") == string("mezs");
+    CHECK(find("mezz", "mess") == string("mezz");
+    CHECK(find("initialise", "initialize") == string("initialise"));
+    CHECK(find("sleep", "sleep") == string("sleep"));
+    CHECK(find("zleep", "sleep") == string("zleep"));
+    CHECK(find("magasine", "magazine") == string("magasine"));
+    CHECK(find("gooze", "goose") == string("gooze"));
+    CHECK(find("marz", "mars") == string("marz"));
+    CHECK(find("buz", "bus") == string("buz"));
+    CHECK(find("organisation", "organization") == string("organisation"));
+    CHECK(find("recognisez", "recognizes") == string("recognizes"));
    
 }
 
 TEST_CASE("check transform between d, t") 
 {
-    
-   
+    CHECK(find("toor","door") == string("toor"));
+    CHECK(find("rood","root") == string("rood"));
+    CHECK(find("telta", "delta") == string("telta"));
+    CHECK(find("telda", "delta") == string("telda"));
+    CHECK(find("horizondal","horizontal") == string("horizondal"));
+    CHECK(find("remode","remote") == string(remode));
+    CHECK(find("build", "built") == string("build"));
+    CHECK(find("bud", "but") == string("bud"));
+    CHECK(find("god", "got") == string("god"));
+    CHECK(find("coasd", "coast") == string("coasd"));
+    CHECK(find("cad", "cat") == string("cad"));
 }
 
 TEST_CASE("check transform between o, u") 
 {
-    
+    CHECK(find("chuculate","chocolate") == string("chuculate");
+    CHECK(find("choculate","chocolate") == string("choculate");
+    CHECK(find("bathruum", "bathroom") == string("bathruum"));
+    CHECK(find("authurs","authors") == string("authurs"));
+    CHECK(find("aothors","authors") == string("aothors"));
+    CHECK(find("aroond", "around") == string("aroond"));
+    CHECK(find("aoto", "auto") == string("aoto"));
+    CHECK(find("buuk", "book") == string("buuk"));
+    CHECK(find("up", "op") == string("up"));
+    CHECK(find("op","up") == string("op"));
+    CHECK(find("aodiu","audio") == string("aodiu"));
    
 }
 
 TEST_CASE("check transform between i, y") 
 {
-    
-   
+    CHECK(find("alwais","always") == string("alwais"));
+    CHECK(find("beauti","beauty") == string("beauty"));
+    CHECK(find("buiyng","buying") == string("buiyng"));
+    CHECK(find("buiing","buying") == string("buiing"));
+    CHECK(find("arrai", "array") == string("arrai"));
+    CHECK(find("easyly","easily") == string("easyly"));
+    CHECK(find("emploiment","employment") == string("emploiment"));
+    CHECK(find("diversyty","diversity") == string("diversyty"));
+    CHECK(find("dyversyty","diversity") == string("dyversyty"));
+    CHECK(find("displaied","displayed") == string("displaied"));
+    CHECK(find("dysplayed", "displayed") == string("dysplayed"))
 }
 
 TEST_CASE("check Exceptions") 
