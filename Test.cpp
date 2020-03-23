@@ -93,7 +93,7 @@ TEST_CASE("check transform between g, j")
         CHECK(find("gum gum jum","jum") == string("jum"));
    
 }
-//////////////////////////////////////////////
+
 
 TEST_CASE("check transform between c, k, q") 
 {
@@ -127,7 +127,10 @@ TEST_CASE("check transform between i, y")
 
 TEST_CASE("check Exceptions") 
 {
-    
+    CHECK_THROWS_AS(find("Dond vorri be haffy", ""), phonetic::RuleException);
+    /// OPTIONAL CASES TO THROW EXEPTION ///
+    /// empty word
+    ///didnt find the word
    
 }
 
