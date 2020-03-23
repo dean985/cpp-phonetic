@@ -97,7 +97,7 @@ TEST_CASE("check transform between g, j")
 
 TEST_CASE("check transform between c, k, q") 
 {       
-        string text = "kommunity cuit kuiet cilo"
+        string text = "kommunity cuit kuiet cilo";
         CHECK(find(text, "community") == string("kommunity"));
         CHECK(find(text, "quit") == string("cuit"));
         CHECK(find(text, "quiet") == string("keuit"));
@@ -116,8 +116,8 @@ TEST_CASE("check transform between c, k, q")
 
 TEST_CASE("check transform between s, z") 
 {
-    CHECK(find("mezs", "mess") == string("mezs");
-    CHECK(find("mezz", "mess") == string("mezz");
+    CHECK(find("mezs", "mess") == string("mezs"));
+    CHECK(find("mezz", "mess") == string("mezz"));
     CHECK(find("initialise", "initialize") == string("initialise"));
     CHECK(find("sleep", "sleep") == string("sleep"));
     CHECK(find("zleep", "sleep") == string("zleep"));
@@ -137,7 +137,7 @@ TEST_CASE("check transform between d, t")
     CHECK(find("telta", "delta") == string("telta"));
     CHECK(find("telda", "delta") == string("telda"));
     CHECK(find("horizondal","horizontal") == string("horizondal"));
-    CHECK(find("remode","remote") == string(remode));
+    CHECK(find("remode","remote") == string("remode"));
     CHECK(find("build", "built") == string("build"));
     CHECK(find("bud", "but") == string("bud"));
     CHECK(find("god", "got") == string("god"));
@@ -147,8 +147,8 @@ TEST_CASE("check transform between d, t")
 
 TEST_CASE("check transform between o, u") 
 {
-    CHECK(find("chuculate","chocolate") == string("chuculate");
-    CHECK(find("choculate","chocolate") == string("choculate");
+    CHECK(find("chuculate","chocolate") == string("chuculate"));
+    CHECK(find("choculate","chocolate") == string("choculate"));
     CHECK(find("bathruum", "bathroom") == string("bathruum"));
     CHECK(find("authurs","authors") == string("authurs"));
     CHECK(find("aothors","authors") == string("aothors"));
@@ -173,7 +173,7 @@ TEST_CASE("check transform between i, y")
     CHECK(find("diversyty","diversity") == string("diversyty"));
     CHECK(find("dyversyty","diversity") == string("dyversyty"));
     CHECK(find("displaied","displayed") == string("displaied"));
-    CHECK(find("dysplayed", "displayed") == string("dysplayed"))
+    CHECK(find("dysplayed", "displayed") == string("dysplayed"));
 }
 
 TEST_CASE("check Exceptions") 
@@ -186,12 +186,11 @@ TEST_CASE("check Exceptions")
     CHECK_THROWS_AS(find("Dond vorri be haffy", "hello@$"), phonetic::badWord);
     CHECK_THROWS_AS(find("Dond vorri be haffy", "hello"), phonetic::notFound);
     CHECK_THROWS_AS(find("Dond vorri be haffy", "vorr"), phonetic::notFound);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "vorr"), phonetic::notFound);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "vorr"), phonetic::notFound);
 
     /// OPTIONAL CASES TO THROW EXEPTION ///
     /// empty word
     ///didnt find the word
    
 }
-
-
-/* add more test cases here */
