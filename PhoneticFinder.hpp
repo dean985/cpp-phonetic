@@ -27,4 +27,5 @@ namespace phonetic
     };
     
     string find(string text, string word);
+    string* parsing(string text, int* spaces);
 }
