@@ -13,7 +13,7 @@ TEST_CASE("check if LOWER CASE transform work")
     CHECK(find(text,"DoNd") == string("Dond"));
     
     
-    CHECK(find(text,"Vorri") == string("vori"));
+    CHECK(find(text,"Vorri") == string("vorri"));
     CHECK(find(text,"vorrI") == string("vorri"));
     CHECK(find(text,"vorri") == string("vorri"));
     
@@ -38,7 +38,7 @@ TEST_CASE("check transform between v and w")
         CHECK(find(text,"worry") == string("vorri"));
         
         
-        CHECK(find("vord and word","word") == string("word"));
+        CHECK(find("vord and word","word") == string("vord"));
         CHECK(find("my name is volwerine","wolverine") == string("volwerine"));
         CHECK(find("my name is wolwerine","wolverine") == string("wolwerine"));
         

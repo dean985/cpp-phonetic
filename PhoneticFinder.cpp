@@ -1,10 +1,16 @@
 #include "PhoneticFinder.hpp"
 #include <string>
+#include <iostream>
 using namespace std;
 
 
 namespace phonetic
-{
+{   
+    bool isLetter(char c){
+        if ( (c > 64 && c <91)  || (c >96 && c <123)) return true;
+        return false;
+    }
+
     /**
      * This function is building an array of words
      * text is the input string to be examined
@@ -56,6 +62,10 @@ namespace phonetic
             if (str.length() == word.length()){                             // start checking the word if and only if the word length is the same
                 int c = 0;
                 while(c < str.length()){
+                    if (!isLetter(str[c])){
+                      throw badWord();  
+                    } 
+
                     if (str[c] == word[c] + 32  || str[c]) c++;
                     
                     else if(str[c]=='j'||str[c]=='g'||str[c]=='J'||str[c]=='G'){
@@ -134,16 +144,18 @@ namespace phonetic
                 }
                 // While statement finished
 
-                if (word.length() == c){
+                if (word.length() == c){        //If the our counter c equals to the word length
+                                                //then we have a match
                     delete[] t;
                     return str;
                 }
             }
         }
-        //End of for loop
+        //End of for loop 
+        //If reached here - There is no match
+        //free memory and throw 
         delete[] t;
-        //throw badWord();
-        return "It's not HERE";
+        throw notFound();
     }
     
 }
