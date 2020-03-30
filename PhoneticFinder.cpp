@@ -68,7 +68,7 @@ namespace phonetic
                 int c = 0;
                 while(c < str.length()){
                     if (!isLetter(str[c])){
-                      throw badWord();  
+                      throw phonetic::RuleException();  
                     } 
 
                     if (str[c] == word[c] + 32  || str[c] == word[c]) c++;
@@ -160,7 +160,7 @@ namespace phonetic
         //If reached here - There is no match
         //free memory and throw 
         delete[] t;
-        throw notFound();
+        throw phonetic::RuleException();
     }
     
 }
