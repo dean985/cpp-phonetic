@@ -13,7 +13,7 @@ TEST_CASE("check if LOWER CASE transform work")
     CHECK(find(text,"DoNd") == string("Dond"));
     
     
-    CHECK(find(text,"Vorri") == string("vori"));
+    CHECK(find(text,"Vorri") == string("vorri"));
     CHECK(find(text,"vorrI") == string("vorri"));
     CHECK(find(text,"vorri") == string("vorri"));
     
@@ -48,8 +48,8 @@ TEST_CASE("check transform between v and w")
         
         CHECK(find("twerk for Vork","work") == string("Vork"));
 
-        CHECK(find("ve vill we vill rock you","we") == "we");
-        CHECK(find("cov and cov were out","cow") == "cov");
+        CHECK(find("ve vill we vill rock you","we") == string("we"));
+        CHECK(find("cov and cov were out","cow") == string("cov"));
    
 }
 
@@ -69,7 +69,7 @@ TEST_CASE("check transform between b, f, p")
         CHECK(find("broblem and not problem","broblem") == string("broblem")); 
         
         CHECK(find("club or clup","clup") == string("clup"));
-        CHECK(find("pice of faber","paper") == string("paber"));
+        CHECK(find("pice of faber","paper") == string("faber"));
     
    
 }
@@ -100,7 +100,7 @@ TEST_CASE("check transform between c, k, q")
         string text = "kommunity cuit kuiet cilo";
         CHECK(find(text, "community") == string("kommunity"));
         CHECK(find(text, "quit") == string("cuit"));
-        CHECK(find(text, "quiet") == string("keuit"));
+        CHECK(find(text, "quiet") == string("kuiet"));
         CHECK(find(text, "kilo") == string("cilo"));
         
         string text2 = "herkules chikqen qangroo darq";
@@ -126,7 +126,7 @@ TEST_CASE("check transform between s, z")
     CHECK(find("marz", "mars") == string("marz"));
     CHECK(find("buz", "bus") == string("buz"));
     CHECK(find("organisation", "organization") == string("organisation"));
-    CHECK(find("recognisez", "recognizes") == string("recognizes"));
+    CHECK(find("recognisez", "recognizes") == string("recognisez"));
    
 }
 
@@ -164,7 +164,7 @@ TEST_CASE("check transform between o, u")
 TEST_CASE("check transform between i, y") 
 {
     CHECK(find("alwais","always") == string("alwais"));
-    CHECK(find("beauti","beauty") == string("beauty"));
+    CHECK(find("beauti","beauty") == string("beauti"));
     CHECK(find("buiyng","buying") == string("buiyng"));
     CHECK(find("buiing","buying") == string("buiing"));
     CHECK(find("arrai", "array") == string("arrai"));
@@ -179,19 +179,19 @@ TEST_CASE("check transform between i, y")
 TEST_CASE("check Exceptions") 
 {
     CHECK_THROWS_AS(find("Dond vorri be haffy", ""), phonetic::RuleException);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "123"), phonetic::badWord);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "123word"), phonetic::badWord);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "1a2b3"), phonetic::badWord);
-    CHECK_THROWS_AS(find("Dond 1a2b3 be haffy", "vorri"), phonetic::badWord);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "hello1a2b3"), phonetic::badWord);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "vorri be"), phonetic::badWord);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "hello@$"), phonetic::badWord);
-    CHECK_THROWS_AS(find("Dond vorri !!!! haffy", "Dond"), phonetic::badWord);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "hello"), phonetic::notFound);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "haff"), phonetic::notFound);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "bbe"), phonetic::notFound);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "vorr"), phonetic::notFound);
-    CHECK_THROWS_AS(find("Dond vorri be haffy", "worre"), phonetic::notFound);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "123"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "123word"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "1a2b3"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond 1a2b3 be haffy", "vorri"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "hello1a2b3"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "vorri be"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "hello@$"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Do!nd vorri !!!! haffy", "Dond"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "hello"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "haff"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "bbe"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "vorr"), phonetic::RuleException);
+    CHECK_THROWS_AS(find("Dond vorri be haffy", "worre"), phonetic::RuleException);
     
     /// OPTIONAL CASES TO THROW EXEPTION ///
     /// empty word

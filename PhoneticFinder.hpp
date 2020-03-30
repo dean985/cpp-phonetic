@@ -12,19 +12,7 @@ namespace phonetic
        }
     };
     
-    struct badWord : public exception {
-        const char * what () const throw () 
-        {
-            return "String contains a letter that isn't in english.";
-        }
-    };
-    
-    struct notFound : public exception {
-        const char * what () const throw () 
-        {
-            return "Word not found.";
-        }
-    };
     
     string find(string text, string word);
+    string* parsing(string text, int* spaces);
 }
