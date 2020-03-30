@@ -58,11 +58,15 @@ namespace phonetic
         string* t = parsing(text, &m);
 
         if (word.empty() ) {
+            delete[] t;
             throw phonetic::RuleException();
         }
 
         for (int i =0 ; i < m; i++){
-            if (word.compare(t[i]) == 0) return t[i];
+            if (word.compare(t[i]) == 0) {
+                delete[] t;
+                return t[i];
+            }
         }
 
         for (int i = 0 ; i< m; i++){
@@ -72,6 +76,7 @@ namespace phonetic
                 int c = 0;
                 while(c < str.length()){
                     if (!isLetter(str[c])){
+                      delete[] t;
                       throw phonetic::RuleException();  
                     } 
 
