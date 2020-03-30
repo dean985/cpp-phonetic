@@ -57,6 +57,10 @@ namespace phonetic
         int m = 0;
         string* t = parsing(text, &m);
 
+        if (word.empty() ) {
+            throw phonetic::RuleException();
+        }
+
         for (int i =0 ; i < m; i++){
             if (word.compare(t[i]) == 0) return t[i];
         }
@@ -71,7 +75,8 @@ namespace phonetic
                       throw phonetic::RuleException();  
                     } 
 
-                    if (str[c] == word[c] + 32  || str[c] == word[c]) c++;
+                    //if (str[c] == word[c] + 32  || str[c] == word[c] || str[c] + 32 == word[c] ) c++;
+                    if (tolower(str[c]) == tolower(word[c])) c++;
                     
                     else if(str[c]=='j'||str[c]=='g'||str[c]=='J'||str[c]=='G'){
                         if(word[c]=='j'||word[c]=='g'||word[c]=='J'||word[c]=='G'){
