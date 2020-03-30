@@ -193,8 +193,6 @@ TEST_CASE("check Exceptions")
     CHECK_THROWS_AS(find("Dond vorri be haffy", "vorr"), phonetic::RuleException);
     CHECK_THROWS_AS(find("Dond vorri be haffy", "worre"), phonetic::RuleException);
     
-    /// OPTIONAL CASES TO THROW EXEPTION ///
-    /// empty word
-    ///didnt find the word
+
    
 }
