@@ -56,6 +56,11 @@ namespace phonetic
     {
         int m = 0;
         string* t = parsing(text, &m);
+
+        for (int i =0 ; i < m; i++){
+            if (word.compare(t[i]) == 0) return t[i];
+        }
+
         for (int i = 0 ; i< m; i++){
             string str = t[i];                                              // str is the current word being examined
             
@@ -66,7 +71,7 @@ namespace phonetic
                       throw badWord();  
                     } 
 
-                    if (str[c] == word[c] + 32  || str[c]) c++;
+                    if (str[c] == word[c] + 32  || str[c] == word[c]) c++;
                     
                     else if(str[c]=='j'||str[c]=='g'||str[c]=='J'||str[c]=='G'){
                         if(word[c]=='j'||word[c]=='g'||word[c]=='J'||word[c]=='G'){

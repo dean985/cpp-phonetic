@@ -38,7 +38,7 @@ TEST_CASE("check transform between v and w")
         CHECK(find(text,"worry") == string("vorri"));
         
         
-        CHECK(find("vord and word","word") == string("vord"));
+        CHECK(find("vord and word","word") == string("word"));
         CHECK(find("my name is volwerine","wolverine") == string("volwerine"));
         CHECK(find("my name is wolwerine","wolverine") == string("wolwerine"));
         
@@ -48,8 +48,8 @@ TEST_CASE("check transform between v and w")
         
         CHECK(find("twerk for Vork","work") == string("Vork"));
 
-        CHECK(find("ve vill we vill rock you","we") == "we");
-        CHECK(find("cov and cov were out","cow") == "cov");
+        CHECK(find("ve vill we vill rock you","we") == string("we"));
+        CHECK(find("cov and cov were out","cow") == string("cov"));
    
 }
 
@@ -69,7 +69,7 @@ TEST_CASE("check transform between b, f, p")
         CHECK(find("broblem and not problem","broblem") == string("broblem")); 
         
         CHECK(find("club or clup","clup") == string("clup"));
-        CHECK(find("pice of faber","paper") == string("paber"));
+        CHECK(find("pice of faber","paper") == string("faber"));
     
    
 }
@@ -100,7 +100,7 @@ TEST_CASE("check transform between c, k, q")
         string text = "kommunity cuit kuiet cilo";
         CHECK(find(text, "community") == string("kommunity"));
         CHECK(find(text, "quit") == string("cuit"));
-        CHECK(find(text, "quiet") == string("keuit"));
+        CHECK(find(text, "quiet") == string("kuiet"));
         CHECK(find(text, "kilo") == string("cilo"));
         
         string text2 = "herkules chikqen qangroo darq";
@@ -126,7 +126,7 @@ TEST_CASE("check transform between s, z")
     CHECK(find("marz", "mars") == string("marz"));
     CHECK(find("buz", "bus") == string("buz"));
     CHECK(find("organisation", "organization") == string("organisation"));
-    CHECK(find("recognisez", "recognizes") == string("recognizes"));
+    CHECK(find("recognisez", "recognizes") == string("recognisez"));
    
 }
 
@@ -164,7 +164,7 @@ TEST_CASE("check transform between o, u")
 TEST_CASE("check transform between i, y") 
 {
     CHECK(find("alwais","always") == string("alwais"));
-    CHECK(find("beauti","beauty") == string("beauty"));
+    CHECK(find("beauti","beauty") == string("beauti"));
     CHECK(find("buiyng","buying") == string("buiyng"));
     CHECK(find("buiing","buying") == string("buiing"));
     CHECK(find("arrai", "array") == string("arrai"));
