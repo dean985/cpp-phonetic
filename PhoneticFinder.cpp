@@ -1,13 +1,14 @@
 #include "PhoneticFinder.hpp"
 #include <string>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 
 namespace phonetic
 {   
     bool isLetter(char c){
-        if ( (c > 64 && c <91)  || (c >96 && c <123)) return true;
+        if ( (c > 64 && c <91)  || (c >96 && c <123) || c == ' ') return true;
         return false;
     }
 
@@ -17,7 +18,7 @@ namespace phonetic
      * spaces- an integer that has to be initialized to zero as an argument
      *         and the value of it will be changes to the amount of words
      */
-    string* parsing(string text, int* spaces){
+    string* parsing(string text, int* spaces){        
         int t = 0;
         // Searching for spaces - in order to understand
         // how many words are there
@@ -31,9 +32,9 @@ namespace phonetic
         int wordlength = 0;
 
         for (int i = 0; i <text.length(); i++){
-            //if it is a space
+            //if it is a letter
             if (text[i] != ' ') letters++;
-            // else , it is a letter.
+            // else , it is a space.
             else {
                 str[wordlength] = text.substr(i-letters, letters);
                 letters = 0;
@@ -54,13 +55,18 @@ namespace phonetic
      */
     string find(string text, string word)
     {
-        int m = 0;
-        string* t = parsing(text, &m);
-
-        if (word.empty() ) {
-            delete[] t;
+         if (word.empty() ) {
             throw phonetic::RuleException();
         }
+        string tempT = text;
+        transform(tempT.begin(), tempT.end(), tempT.begin(), ::tolower);
+        string tempW = word;
+        transform(tempW.begin(), tempW.end(), tempW.begin(), ::tolower);
+        if (tempT.compare(tempW) == 0){
+            return text;
+        }
+        int m = 0;
+        string* t = parsing(text, &m);
 
         for (int i =0 ; i < m; i++){
             if (word.compare(t[i]) == 0) {
@@ -81,7 +87,7 @@ namespace phonetic
                     } 
 
                     //if (str[c] == word[c] + 32  || str[c] == word[c] || str[c] + 32 == word[c] ) c++;
-                    if (tolower(str[c]) == tolower(word[c])) c++;
+                    if ( tolower(str[c]) == tolower(word[c])) c++;
                     
                     else if(str[c]=='j'||str[c]=='g'||str[c]=='J'||str[c]=='G'){
                         if(word[c]=='j'||word[c]=='g'||word[c]=='J'||word[c]=='G'){
